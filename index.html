@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<button type="btn" onclick="turnOn()">Light On</button>
+<canvas id="myCanvas" width="500px" height="500px" style="border: 1px solid #000000"></canvas>
+<button type="btn" onclick="turnOff()">Light Off</button>
+<script>
+    function Light(x,y,radius,color) {
+        this.x = x;
+        this.y = y;
+        this.radius = radius;
+        this.color = color;
+        this.render = function (canvas) {
+            var context = canvas.getContext("2d");
+            context.clearRect(0,0,600,600);
+            context.beginPath();
+            context.arc(light.x, light.y,light.radius, 0, 2 * Math.PI);
+            context.fillStyle = this.color;
+            context.fill();
+        }
+    }
+    var x = 100;
+    var y = 150;
+    var radius = 80;
+    var color = "yellow";
+    var light = new Light(x,y, radius, color);
+    var canvas = document.getElementById('myCanvas');
+    light.render(canvas);
+    function turnOn() {
+        light.color = 'yellow';
+        light.render(canvas);
+    }
+    function turnOff() {
+       light.color = 'black';
+       light.render(canvas);
+    }
+</script>
+</body>
+</html>
